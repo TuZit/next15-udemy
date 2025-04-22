@@ -5,11 +5,16 @@ export default function MealGrid({ meals }) {
   return (
     <>
       <ul className={classes.meals}>
-        {meals.map((meal) => (
-          <li key={meal.id}>
-            <MealItem {...meal} />
-          </li>
-        ))}
+        {meals.map((meal) => {
+          if (meal.image.startsWith("/")) {
+            return (
+              <li key={meal.id}>
+                <MealItem {...meal} />
+              </li>
+            );
+          }
+          return <></>;
+        })}
       </ul>
     </>
   );
